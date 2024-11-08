@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func tilt_camera(input_direction: int, delta:float) -> void:
-	print(input_direction)
+
 	if input_direction == 0:
 		camera_3d.rotation_degrees.z = lerpf(camera_3d.rotation_degrees.z, 0.0, camera_tilt_speed * delta)
 	elif input_direction == 1:

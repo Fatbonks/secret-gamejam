@@ -1,0 +1,3 @@
+[submodule "custom-godot-classes"]
+	path = custom-godot-classes
+	url = https://github.com/Fatbonks/custom-godot-classes
