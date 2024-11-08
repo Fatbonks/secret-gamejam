@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://crmobp4fr30n6"]
+[gd_scene load_steps=8 format=3 uid="uid://crmobp4fr30n6"]
 
 [ext_resource type="Script" path="res://levels/world_script.gd" id="1_pe2ur"]
 [ext_resource type="PackedScene" uid="uid://bm4i0gaf0i0ku" path="res://objects/player/player.tscn" id="2_ct8pe"]
 [ext_resource type="PackedScene" uid="uid://dqq6qf6132g34" path="res://objects/door/door.tscn" id="3_smx31"]
+[ext_resource type="PackedScene" uid="uid://bt71sfxw0lmwo" path="res://objects/keys/redkey.tscn" id="4_tdbqw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ob5lb"]
 size = Vector3(30, 1, 30)
@@ -35,3 +36,6 @@ camera_tilt_amount = 2.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.944261, 0.329196, 0, -0.329196, 0.944261, 0, 21.8558, 17.5109)
+
+[node name="Redkey" parent="." instance=ExtResource("4_tdbqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.80155, 0.825243, 1.86629)

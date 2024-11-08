@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://bt71sfxw0lmwo"]
+
+[ext_resource type="Script" path="res://objects/keys/key.gd" id="1_dfmp7"]
+[ext_resource type="Script" path="res://resource/scripts/key.gd" id="2_cqr78"]
+
+[sub_resource type="Resource" id="Resource_vjebo"]
+script = ExtResource("2_cqr78")
+key_name = "Red key"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxsu6"]
+size = Vector3(1, 1, 1.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_875nq"]
+size = Vector3(0.165, 0.17, 0.94)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gv2b5"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g1e3p"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Redkey" type="Area3D" node_paths=PackedStringArray("animation_player", "_3d_text_sprite") groups=["interactable_items"]]
+monitoring = false
+script = ExtResource("1_dfmp7")
+key_type = SubResource("Resource_vjebo")
+animation_player = NodePath("")
+_3d_text_sprite = NodePath("Sprite3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.194092)
+shape = SubResource("BoxShape3D_uxsu6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_875nq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.485, 0, 0, 0, 0.485, 0, 0, 0, 0.485, 0, 0, -0.659096)
+mesh = SubResource("SphereMesh_gv2b5")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371483, -0.146489)
+visible = false
+billboard = 1
+double_sided = false
+texture = SubResource("ViewportTexture_g1e3p")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pick up
+E"
+horizontal_alignment = 1

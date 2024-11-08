@@ -9,12 +9,16 @@ extends CharacterBody3D
 @export_range(0, 20) var camera_tilt_amount: float
 @export_range(0, 10) var camera_tilt_speed: float
 
+@export_category("random ah shit")
+@export var pic_up_text:Label
+@export var text_anim: AnimationPlayer
 @onready var camera_3d: Camera3D = %Camera3D
 
 
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	GlobalScript.ui_text_picked_up.connect(_set_text_pickup)
 
 
 func _input(event:InputEvent) -> void:
@@ -56,3 +60,7 @@ func tilt_camera(input_direction: int, delta:float) -> void:
 		camera_3d.rotation_degrees.z = lerpf(camera_3d.rotation_degrees.z, -camera_tilt_amount, camera_tilt_speed * delta)
 	elif input_direction == -1:
 		camera_3d.rotation_degrees.z = lerpf(camera_3d.rotation_degrees.z, camera_tilt_amount, camera_tilt_speed * delta)
+
+func _set_text_pickup(text:String) -> void:
+	pic_up_text.text = text
+	text_anim.play('picked_up_anim')
