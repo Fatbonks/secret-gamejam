@@ -1,23 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm4i0gaf0i0ku"]
+[gd_scene load_steps=8 format=3 uid="uid://bm4i0gaf0i0ku"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_er205"]
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_er205"]
+[ext_resource type="Script" path="res://objects/player/interact_system.gd" id="2_hp50v"]
+[ext_resource type="Script" path="res://resource/scripts/key.gd" id="3_kduyd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kcby"]
+size = Vector3(0.1, 0.1, 3)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lyo58"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nbbji"]
 
+[sub_resource type="Resource" id="Resource_yepvf"]
+script = ExtResource("3_kduyd")
+key_name = "Red key"
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_er205")
 mouse_sensitivity = 0.5
-camera_tilt_amount = 8.0
+camera_tilt_amount = 4.0
 camera_tilt_speed = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
+[node name="Area3D" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.12925)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Area3D"]
+shape = SubResource("BoxShape3D_6kcby")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_lyo58")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_nbbji")
+
+[node name="InteractSystem" type="Node" parent="."]
+script = ExtResource("2_hp50v")
+ke = SubResource("Resource_yepvf")
+
+[connection signal="area_entered" from="Camera3D/Area3D" to="InteractSystem" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Camera3D/Area3D" to="InteractSystem" method="_on_area_3d_area_exited"]
