@@ -20,11 +20,10 @@ rings = 4
 [sub_resource type="ViewportTexture" id="ViewportTexture_g1e3p"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Redkey" type="Area3D" node_paths=PackedStringArray("animation_player", "_3d_text_sprite") groups=["interactable_items"]]
+[node name="Redkey" type="Area3D" node_paths=PackedStringArray("_3d_text_sprite") groups=["interactable_items"]]
 monitoring = false
 script = ExtResource("1_dfmp7")
 key_type = SubResource("Resource_vjebo")
-animation_player = NodePath("")
 _3d_text_sprite = NodePath("Sprite3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

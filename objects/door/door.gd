@@ -16,9 +16,9 @@ func _ready() -> void:
 	else:
 		label.text = text[1]
 
-func _use_item() -> void:
+func _use_item(interact_sys:InteractionSystem) -> void:
 	if is_locked:
-		use_key(GlobalScript.player_keys)
+		use_key(interact_sys.player_keys)
 		return
 	
 	if !is_open:

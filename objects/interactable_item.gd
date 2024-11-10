@@ -3,7 +3,7 @@ extends Area3D
 
 @export var _3d_text_sprite: Sprite3D
 
-func _use_item() -> void:
+func _use_item(interact_sys:InteractionSystem) -> void:
 	pass
 
 func change_sprite_visibility() -> void:

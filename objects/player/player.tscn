@@ -1,53 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm4i0gaf0i0ku"]
+[gd_scene load_steps=20 format=3 uid="uid://bm4i0gaf0i0ku"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_er205"]
 [ext_resource type="Script" path="res://objects/player/interact_system.gd" id="2_hp50v"]
+[ext_resource type="Script" path="res://objects/player/ui.gd" id="3_c62hb"]
+[ext_resource type="Texture2D" uid="uid://2y52toxr8e4e" path="res://textures/healthbarprogessback.png" id="4_5351j"]
+[ext_resource type="Texture2D" uid="uid://bq50paq6ja2it" path="res://textures/healthbarprogessfront.png" id="5_w77fk"]
+[ext_resource type="Texture2D" uid="uid://ca0gj36320wj6" path="res://textures/healthbarprogess.png" id="6_jg7jt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kcby"]
-size = Vector3(0.1, 0.1, 2)
+size = Vector3(0.1, 0.1, 2.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_82k2x"]
+viewport_path = NodePath("HealthUI")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lyo58"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nbbji"]
-
-[sub_resource type="Animation" id="Animation_rcr4j"]
-resource_name = "picked_up_anim"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/PickedUpText:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/PickedUpText:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(556, 625), Vector2(556, 530)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control/PickedUpText:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_w05wq"]
 length = 0.001
@@ -88,30 +56,97 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_rcr4j"]
+resource_name = "picked_up_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/PickedUpText:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/PickedUpText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(556, 625), Vector2(556, 530)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/PickedUpText:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_adbnw"]
 _data = {
 "RESET": SubResource("Animation_w05wq"),
 "picked_up_anim": SubResource("Animation_rcr4j")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("pic_up_text", "text_anim")]
+[sub_resource type="Gradient" id="Gradient_ylumg"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d72h2"]
+gradient = SubResource("Gradient_ylumg")
+
+[sub_resource type="Gradient" id="Gradient_6ce8n"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a0gfx"]
+gradient = SubResource("Gradient_6ce8n")
+
+[sub_resource type="Gradient" id="Gradient_pn51e"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3i2y4"]
+gradient = SubResource("Gradient_pn51e")
+
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_er205")
 mouse_sensitivity = 0.5
 camera_tilt_amount = 4.0
 camera_tilt_speed = 10.0
-pic_up_text = NodePath("Control/PickedUpText")
-text_anim = NodePath("textAnim")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Area3D" type="Area3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.12925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75)
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Area3D"]
 shape = SubResource("BoxShape3D_6kcby")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+spot_angle = 41.36
+
+[node name="Sprite3D" type="Sprite3D" parent="Camera3D"]
+transform = Transform3D(0.426288, 0, 0.261301, 0, 0.5, 0, -0.261301, 0, 0.426288, -3.82603, -1.46171, -4.73603)
+visible = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_82k2x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_lyo58")
@@ -119,8 +154,10 @@ shape = SubResource("CapsuleShape3D_lyo58")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_nbbji")
 
-[node name="InteractSystem" type="Node" parent="."]
+[node name="InteractSystem" type="Node" parent="." node_paths=PackedStringArray("pic_up_text", "text_anim")]
 script = ExtResource("2_hp50v")
+pic_up_text = NodePath("../Control/PickedUpText")
+text_anim = NodePath("../textAnim")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -150,5 +187,146 @@ libraries = {
 "": SubResource("AnimationLibrary_adbnw")
 }
 
+[node name="HealthUI" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(800, 512)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_c62hb")
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Panel" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -252.0
+offset_top = 1.0
+offset_right = -188.0
+offset_bottom = 41.0
+grow_horizontal = 2
+scale = Vector2(8, 8)
+value = 100.0
+texture_under = ExtResource("4_5351j")
+texture_over = ExtResource("5_w77fk")
+texture_progress = ExtResource("6_jg7jt")
+
+[node name="Red" type="Control" parent="UI/Control"]
+anchors_preset = 0
+offset_left = 352.0
+offset_top = 356.0
+offset_right = 352.0
+offset_bottom = 356.0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Red"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 23.0
+offset_right = 80.0
+offset_bottom = 87.0
+texture = SubResource("GradientTexture2D_d72h2")
+
+[node name="Key" type="Label" parent="UI/Control/Red/TextureRect"]
+layout_mode = 2
+offset_left = -16.0
+offset_top = -23.0
+offset_right = 76.0
+text = "red keycard"
+
+[node name="RedFound" type="Label" parent="UI/Control/Red"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 90.0
+offset_right = 92.0
+offset_bottom = 113.0
+text = "not found"
+
+[node name="White" type="Control" parent="UI/Control"]
+anchors_preset = 0
+offset_left = 691.0
+offset_top = 353.0
+offset_right = 691.0
+offset_bottom = 353.0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/White"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 23.0
+offset_right = 80.0
+offset_bottom = 87.0
+texture = SubResource("GradientTexture2D_a0gfx")
+
+[node name="Key" type="Label" parent="UI/Control/White/TextureRect"]
+layout_mode = 2
+offset_left = -16.0
+offset_top = -23.0
+offset_right = 76.0
+text = "white keycard"
+
+[node name="WhiteFound" type="Label" parent="UI/Control/White"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 90.0
+offset_right = 92.0
+offset_bottom = 113.0
+text = "not found"
+
+[node name="Yellow" type="Control" parent="UI/Control"]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 355.0
+offset_right = 520.0
+offset_bottom = 355.0
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/Yellow"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 23.0
+offset_right = 80.0
+offset_bottom = 87.0
+texture = SubResource("GradientTexture2D_3i2y4")
+
+[node name="Key" type="Label" parent="UI/Control/Yellow/TextureRect"]
+layout_mode = 2
+offset_left = -16.0
+offset_top = -23.0
+offset_right = 76.0
+text = "yellow keycard"
+
+[node name="YellowFound" type="Label" parent="UI/Control/Yellow"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 90.0
+offset_right = 92.0
+offset_bottom = 113.0
+text = "not found"
+
 [connection signal="area_entered" from="Camera3D/Area3D" to="InteractSystem" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Camera3D/Area3D" to="InteractSystem" method="_on_area_3d_area_exited"]
+[connection signal="found_key" from="InteractSystem" to="UI" method="_on_interact_system_found_key"]
+[connection signal="ui_text_picked_up" from="InteractSystem" to="InteractSystem" method="_set_text_pickup"]
