@@ -36,7 +36,6 @@ camera_tilt_amount = 2.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.944261, 0.329196, 0, -0.329196, 0.944261, 0, 21.8558, 17.5109)
-visible = false
 
 [node name="Redkey" parent="." instance=ExtResource("4_tdbqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.80155, 0.825243, 1.86629)

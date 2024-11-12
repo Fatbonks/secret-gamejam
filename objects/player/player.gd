@@ -9,13 +9,20 @@ extends CharacterBody3D
 @export_range(0, 20) var camera_tilt_amount: float
 @export_range(0, 10) var camera_tilt_speed: float
 
+@export_category("Weapon tilt")
+@export var weapon_pivot: Node3D
+@export_range(0, 20) var weapon_tilt_amount: float
+@export_range(0, 10) var weapon_tilt_speed: float
+
 @export_category("random ah shit")
+@export var arm_animation: AnimationPlayer
 @onready var camera_3d: Camera3D = %Camera3D
 
-
-
+var weapon_reset_position: Vector3
+var enable_ui:bool = false
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	weapon_reset_position = weapon_pivot.position
 
 
 func _input(event:InputEvent) -> void:
@@ -24,6 +31,12 @@ func _input(event:InputEvent) -> void:
 		camera_3d.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		#mouse_input = event.relative
+	if event.is_action_pressed("show ui") and !enable_ui:
+		arm_animation.play('show ui')
+		enable_ui = true
+	elif event.is_action_pressed("show ui") and enable_ui:
+		arm_animation.play('hide ui')
+		enable_ui = false
 
 
 func _physics_process(delta: float) -> void:
@@ -47,7 +60,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	tilt_camera(roundi(input_dir.x), delta)
-	camera_3d.rotation_degrees.y = 0
+	weapon_tilt(round(input_dir), delta)
+	camera_3d.rotation_degrees.y = clamp(camera_3d.rotation_degrees.y, 0, 0)
+	weapon_pivot.rotation_degrees.y = clamp(weapon_pivot.rotation_degrees.y, 0, 0)
 	move_and_slide()
 
 func tilt_camera(input_direction: int, delta:float) -> void:
@@ -58,3 +73,21 @@ func tilt_camera(input_direction: int, delta:float) -> void:
 		camera_3d.rotation_degrees.z = lerpf(camera_3d.rotation_degrees.z, -camera_tilt_amount, camera_tilt_speed * delta)
 	elif input_direction == -1:
 		camera_3d.rotation_degrees.z = lerpf(camera_3d.rotation_degrees.z, camera_tilt_amount, camera_tilt_speed * delta)
+
+func weapon_tilt(input_direction:Vector2, delta:float) -> void:
+	if input_direction == Vector2.ZERO:
+		weapon_pivot.rotation_degrees.z = lerpf(weapon_pivot.rotation_degrees.z, 0.0, weapon_tilt_speed * delta)
+		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, 0.0, weapon_tilt_speed * delta)
+		weapon_pivot.position = weapon_pivot.position.lerp(weapon_reset_position, weapon_tilt_speed * delta)
+	
+	if input_direction.x == 1:
+		weapon_pivot.rotation_degrees.z = lerpf(weapon_pivot.rotation_degrees.z, -weapon_tilt_amount, weapon_tilt_speed * delta)
+	
+	elif input_direction.x == -1:
+		weapon_pivot.rotation_degrees.z = lerpf(weapon_pivot.rotation_degrees.z, weapon_tilt_amount, weapon_tilt_speed * delta)
+	
+	if input_direction.y == 1:
+		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, weapon_tilt_amount, weapon_tilt_speed * delta)
+	
+	elif input_direction.y == -1:
+		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, -weapon_tilt_amount, weapon_tilt_speed * delta)
