@@ -1,0 +1,163 @@
+[gd_scene load_steps=13 format=4 uid="uid://cks41gpjaoumf"]
+
+[ext_resource type="Script" path="res://objects/elevator_door/elevator_door.gd" id="1_elix6"]
+[ext_resource type="Texture2D" uid="uid://bja330trde6o8" path="res://textures/elevtorImages.png" id="2_jbf07"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h8trj"]
+size = Vector3(3, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nejeu"]
+resource_name = "Material.001"
+cull_mode = 2
+shading_mode = 2
+albedo_texture = ExtResource("2_jbf07")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uxbvf"]
+_surfaces = [{
+"aabb": AABB(-1.2, -2.6, -0.3, 2.4, 5.2, 0.6),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("BAADAAUABAACAAMAAgABAAMAAgAAAAEABAAAAAIABAAGAAAAAwAHAAUAAwABAAcAAAAHAAEAAAAGAAcABQAGAAQABQAHAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAD///////8AAP//AAAAAAAA/////wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAP//AAAAAP////8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x1euj"]
+resource_name = "eledoors_Cube_004"
+_surfaces = [{
+"aabb": AABB(-1.2, -2.6, -0.3, 2.4, 5.2, 0.6),
+"attribute_data": PackedByteArray("l5WkXq6PNaThn7Q5l5WQzi6MOMvhn4D/Dcn1XoCmNaQOibQ5Dck/zwCjOMsOiYD/OZX1XoCmgP8wpLQ5OZU/zwCj7W8wpID/P8mkXq6PgP9ejbQ5P8mQzi6M7W9ejYD/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("DAAJAA8ADAAGAAkACAAFAAsACAACAAUADQABAAcADQATAAEACgAWABAACgAEABYAAAAVAAMAAAASABUAEQAUAA4AEQAXABQA"),
+"material": SubResource("StandardMaterial3D_nejeu"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//8AAP///////wAA//9U1f//AAD///////////////////////9U1f////////////8AAAAA/////wAAAABU1f//AAAAAP///////wAA////////AABU1f////8AAP//AAAAAAAA//8AAAAAAABU1QAAAAAAAP//AAD//wAA//8AAP//AABU1QAA//8AAP//AAAAAP////8AAAAA//9U1QAAAAD/////AAD///////8AAP////9U1QAA/////////3//f1RVVFX/v/9//3//f1TVqir/v/9/////f1RVVFX/v/9/////f1TVqir/v/9/////f1RVVFX/P/9/////f1TVqir/P/9//3//f1RVVFX/P/9//3//f1TVqir/P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_uxbvf")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uqa0l"]
+points = PackedVector3Array(-1.2, -2.6, -0.3, -1.2, -2.6, 0.3, -1.2, 2.6, -0.3, 1.2, -2.6, -0.3, 1.2, -2.6, 0.3, -1.2, 2.6, 0.3, 1.2, 2.6, -0.3, 1.2, 2.6, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqevf"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("2_jbf07")
+texture_filter = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lwuxx"]
+_surfaces = [{
+"aabb": AABB(-1.2, -2.6, -0.3, 2.4, 5.2, 0.6),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAEAAAACAAMABgABAAcABgAAAAEABQABAAMABQAHAAEAAgAGAAQAAgAAAAYAAgAFAAMAAgAEAAUABAAHAAUABAAGAAcA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP////8AAAAAAAAAAAAAAAD//wAAAAD//wAAAAAAAP////8AAAAA//8AAP//AAD///////8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i2wyf"]
+resource_name = "eledoors_Cube_005"
+_surfaces = [{
+"aabb": AABB(-1.2, -2.6, -0.3, 2.4, 5.2, 0.6),
+"attribute_data": PackedByteArray("8JieWy6NOKMOkbQ58JiWzS6NNk8OkYD/tWXPXQCkOKPgp7Q5tWVlzwCkNk/gp4D/IZrPXQCk7Ufei7Q5IZplzwCkgKrei4D/VmSeWy6N7UeworQ5VmSWzS6NgKqwooD/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AgALAAUAAgAIAAsAEgADABUAEgAAAAMAEAAEAAoAEAAWAAQABwATAA0ABwABABMABgAPAAkABgAMAA8ADgAXABEADgAUABcA"),
+"material": SubResource("StandardMaterial3D_uqevf"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP////8AAAAA//9U1QAAAAD/////AAD///////8AAP////9U1QAA////////AAAAAAAA//8AAAAAAABU1QAAAAAAAP//AAD//wAA//8AAP//AABU1QAA//8AAP////8AAAAA/////wAAAABU1f//AAAAAP///////wAA////////AABU1f////8AAP////8AAP///////wAA//9U1f//AAD///////////////////////9U1f///////////3//f1RVVFX/P/9//3//f1TVqir/P/9/////f1RVVFX/P/9/////f1TVqir/P/9/////f1RVVFX/v/9/////f1TVqir/v/9//3//f1RVVFX/v/9//3//f1TVqir/v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lwuxx")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bwbi"]
+points = PackedVector3Array(-1.2, -2.6, -0.3, -1.2, -2.6, 0.3, -1.2, 2.6, -0.3, 1.2, -2.6, -0.3, 1.2, -2.6, 0.3, -1.2, 2.6, 0.3, 1.2, 2.6, -0.3, 1.2, 2.6, 0.3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_srx78"]
+viewport_path = NodePath("SubViewport")
+
+[node name="ElevatorDoor" type="Area3D" node_paths=PackedStringArray("animation", "_3d_text_sprite") groups=["interactable_items"]]
+script = ExtResource("1_elix6")
+animation = NodePath("")
+text = Array[String](["Locked", "Open Door"])
+_3d_text_sprite = NodePath("3DTextSprite")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_h8trj")
+
+[node name="Doorele1" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.74, 0, 0)
+mesh = SubResource("ArrayMesh_x1euj")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Doorele1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doorele1/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_uqa0l")
+
+[node name="Doorele2" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.7, 0, 0)
+mesh = SubResource("ArrayMesh_i2wyf")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Doorele2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doorele2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_2bwbi")
+
+[node name="3DTextSprite" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0719632, -0.0867918, 0.334493)
+visible = false
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_srx78")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -24.5
+offset_right = 42.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Locked"
+horizontal_alignment = 1

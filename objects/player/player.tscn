@@ -248,6 +248,98 @@ colors = PackedColorArray(1, 1, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3i2y4"]
 gradient = SubResource("Gradient_pn51e")
 
+[sub_resource type="Animation" id="Animation_1up6m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.269287, -0.260591, 0.0579323)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.84138, -0.123054, -1.36574)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:top_level")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D/Arms/Armature/Skeleton3D/UIBone/Sprite3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r2u8e"]
+resource_name = "hide ui"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.634276, -0.462332, -0.264678), Vector3(-0.269287, -0.260591, 0.0579323)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.08563, -0.176316, -1.30137), Vector3(-0.84138, -0.123054, -1.36574)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/Arms/Armature/Skeleton3D/UIBone/Sprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_iv6jo"]
 resource_name = "show ui"
 length = 0.5
@@ -299,98 +391,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_r2u8e"]
-resource_name = "hide ui"
-length = 0.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.634276, -0.462332, -0.264678), Vector3(-0.269287, -0.260591, 0.0579323)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.08563, -0.176316, -1.30137), Vector3(-0.84138, -0.123054, -1.36574)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/Arms/Armature/Skeleton3D/UIBone/Sprite3D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_1up6m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.269287, -0.260591, 0.0579323)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.84138, -0.123054, -1.36574)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:top_level")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D/Arms/Armature/Skeleton3D/UIBone/Sprite3D:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e30q0"]
@@ -540,7 +540,7 @@ target_node = NodePath("../../../../WeaponHolder/WeaponPivot/Gun/RightMarker")
 script = ExtResource("2_775sh")
 
 [node name="UIBone" type="BoneAttachment3D" parent="Camera3D/Arms/Armature/Skeleton3D"]
-transform = Transform3D(0.112868, 0.970816, 0.211607, 0.671403, 0.0824733, -0.736489, -0.732447, 0.2252, -0.6425, -0.96753, -0.0541192, -1.41664)
+transform = Transform3D(0.00193121, -0.999996, 0.00204469, 0.991195, 0.00164353, -0.132397, 0.132393, 0.00228237, 0.991195, -2.57836, 0.500342, -0.00403605)
 bone_name = "Bone.006"
 bone_idx = 7
 
@@ -566,7 +566,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.627056, -0.764868, 0.147575, -0.0663267, 0.136336, 0.98844, -0.776145, -0.629595, 0.0347589, 0.270888, -0.223182, 0.262565)
 
 [node name="RightMarker" type="Marker3D" parent="Camera3D/WeaponHolder/WeaponPivot/Gun"]
-transform = Transform3D(0.112491, 0.990278, -0.0818009, -0.652472, 0.135703, 0.745563, 0.749417, -0.030496, 0.661395, -0.269287, -0.260591, 0.0579323)
+transform = Transform3D(0.112487, 0.990278, -0.0818006, -0.652472, 0.135701, 0.745563, 0.749417, -0.0304933, 0.661395, -0.269287, -0.260591, 0.0579323)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_lyo58")

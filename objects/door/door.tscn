@@ -1,11 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqq6qf6132g34"]
+[gd_scene load_steps=6 format=3 uid="uid://dqq6qf6132g34"]
 
-[ext_resource type="Script" path="res://objects/door/door.gd" id="1_qaq6h"]
-[ext_resource type="Script" path="res://resource/scripts/key.gd" id="2_61xw2"]
-
-[sub_resource type="Resource" id="Resource_dlv4a"]
-script = ExtResource("2_61xw2")
-key_name = "Red key"
+[ext_resource type="Script" path="res://objects/door/door_one.gd" id="1_dfi1j"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3dg4a"]
 points = PackedVector3Array(-0.5, -1, -0.05, -0.5, -1, 0.05, -0.5, 1, -0.05, 0.5, -1, -0.05, 0.5, -1, 0.05, -0.5, 1, 0.05, 0.5, 1, -0.05, 0.5, 1, 0.05)
@@ -21,11 +16,8 @@ viewport_path = NodePath("SubViewport")
 
 [node name="door" type="Area3D" node_paths=PackedStringArray("_3d_text_sprite") groups=["interactable_items"]]
 monitoring = false
-script = ExtResource("1_qaq6h")
-is_locked = true
-text = Array[String](["Locked", "Open Door
-E"])
-door_key = SubResource("Resource_dlv4a")
+script = ExtResource("1_dfi1j")
+text = Array[String](["Locked", "Open Door"])
 _3d_text_sprite = NodePath("Pivot/3DTextSprite")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
