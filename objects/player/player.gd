@@ -20,13 +20,14 @@ extends CharacterBody3D
 
 var weapon_reset_position: Vector3
 var enable_ui:bool = false
+var is_frozen:bool = false
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	weapon_reset_position = weapon_pivot.position
 
 
 func _input(event:InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !is_frozen:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		camera_3d.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
@@ -51,8 +52,12 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir:Vector2 = Input.get_vector("left", "right", "forward", "backward")
-	var direction:Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir:Vector2
+	var direction:Vector3
+	if !is_frozen:
+		input_dir = Input.get_vector("left", "right", "forward", "backward")
+		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -91,3 +96,10 @@ func weapon_tilt(input_direction:Vector2, delta:float) -> void:
 	
 	elif input_direction.y == -1:
 		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, -weapon_tilt_amount, weapon_tilt_speed * delta)
+
+func freeze_player():
+	if is_frozen:
+		is_frozen = !is_frozen
+		return
+	is_frozen = true
+	

@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://cks41gpjaoumf"]
+[gd_scene load_steps=15 format=4 uid="uid://cks41gpjaoumf"]
 
-[ext_resource type="Script" path="res://objects/elevator_door/elevator_door.gd" id="1_elix6"]
+[ext_resource type="Script" path="res://objects/elevator/elevator_door/elevator_door.gd" id="1_elix6"]
 [ext_resource type="Texture2D" uid="uid://bja330trde6o8" path="res://textures/elevtorImages.png" id="2_jbf07"]
+[ext_resource type="AudioStream" uid="uid://cl8cidpytl7k" path="res://sound/elevator-door-opens.wav" id="3_lhrjf"]
+[ext_resource type="AudioStream" uid="uid://be1wm2c4s1j35" path="res://sound/closes.mp3" id="4_dn4de"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h8trj"]
 size = Vector3(3, 3, 1)
@@ -93,9 +95,8 @@ points = PackedVector3Array(-1.2, -2.6, -0.3, -1.2, -2.6, 0.3, -1.2, 2.6, -0.3, 
 [sub_resource type="ViewportTexture" id="ViewportTexture_srx78"]
 viewport_path = NodePath("SubViewport")
 
-[node name="ElevatorDoor" type="Area3D" node_paths=PackedStringArray("animation", "_3d_text_sprite") groups=["interactable_items"]]
+[node name="ElevatorDoor" type="Area3D" node_paths=PackedStringArray("_3d_text_sprite") groups=["interactable_items"]]
 script = ExtResource("1_elix6")
-animation = NodePath("")
 text = Array[String](["Locked", "Open Door"])
 _3d_text_sprite = NodePath("3DTextSprite")
 
@@ -104,7 +105,7 @@ shape = SubResource("BoxShape3D_h8trj")
 
 [node name="Doorele1" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.74, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.6, 0, 0)
 mesh = SubResource("ArrayMesh_x1euj")
 skeleton = NodePath("")
 
@@ -115,7 +116,7 @@ shape = SubResource("ConvexPolygonShape3D_uqa0l")
 
 [node name="Doorele2" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.7, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.6, 0, 0)
 mesh = SubResource("ArrayMesh_i2wyf")
 skeleton = NodePath("")
 
@@ -161,3 +162,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Locked"
 horizontal_alignment = 1
+
+[node name="OpenDoor" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_lhrjf")
+volume_db = -28.0
+
+[node name="CloseDoor" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_dn4de")
+volume_db = -28.0
+emission_angle_enabled = true

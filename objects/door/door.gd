@@ -9,12 +9,6 @@ extends InteractableItem
 
 var is_open:bool = false
 
-func _ready() -> void:
-	if is_locked:
-		label.text = text[0]
-	else:
-		label.text = text[1]
-
 
 func _use_item(interact_sys:InteractionSystem) -> void:
 	if is_locked:
@@ -33,3 +27,16 @@ func _tween_door(value:float) -> void:
 
 func use_key(keys:Array[Key]) -> void:
 	pass
+
+func change_sprite_visibility() -> void:
+	if _3d_text_sprite == null:
+		printerr(owner.name + " does not have a sprite to change")
+		return
+	_update_text()
+	_3d_text_sprite.visible = !_3d_text_sprite.visible
+
+func _update_text() -> void:
+	if is_locked:
+		label.text = text[0]
+	else:
+		label.text = text[1]
