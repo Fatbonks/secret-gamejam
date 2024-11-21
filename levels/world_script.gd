@@ -22,6 +22,7 @@ func _ready() -> void:
 	current_level_scene = starter_level
 
 func _on_elevator_load_level(value: int) -> void:
+	current_level_scene.queue_free()
 	randomize()
 	var rand = randi_range(0, levels[value].size() - 1)
 	current_level_string = levels[value][rand]

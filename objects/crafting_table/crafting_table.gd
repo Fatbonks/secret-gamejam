@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var resources:Array[PackedScene]
 @export var Gui:GUIInteractor
 @export var craft_req:Dictionary
 @onready var ammo_con: VBoxContainer = %AmmoCon
@@ -9,15 +10,13 @@ extends Node3D
 @onready var gunpowder_label: Label = %GunpowderLabel
 
 var craft_ammo_type:String
-
 func _ready() -> void:
 	for button:Button in ammo_con.get_children():
 		button.pressed.connect(_craft_ammo.bind(button))
 
-
 func _on_gui_interactor_item_is_being_used() -> void:
-	scrap_label.text = str(Gui.intract_sys.scrap) + " x Scrap"
-	gunpowder_label.text = str(Gui.intract_sys.gunpowder) + " x gunpowder"
+	scrap_label.text = str(Gui.intract_sys.inventory_data.scrap) + " x Scrap"
+	gunpowder_label.text = str(Gui.intract_sys.inventory_data.gunpowder) + " x gunpowder"
 
 
 func _on_ammo_button_pressed() -> void:
@@ -35,14 +34,23 @@ func _craft_ammo(button_type:Button) -> void:
 
 
 func _on_craft_button_pressed() -> void:
-	if Gui.intract_sys.scrap < craft_req[craft_ammo_type]["Scrap"]:
+	if Gui.intract_sys.inventory_data.scrap < craft_req[craft_ammo_type]["Scrap"]:
 		print("not enough scrap")
 		return
-	if Gui.intract_sys.gunpowder < craft_req[craft_ammo_type]["Gunpowder"]:
+	if Gui.intract_sys.inventory_data.gunpowder < craft_req[craft_ammo_type]["Gunpowder"]:
 		print("not enough gunpowder")
 		return
-	
-	Gui.intract_sys.scrap -= craft_req[craft_ammo_type]["Scrap"]
-	Gui.intract_sys.gunpowder -= craft_req[craft_ammo_type]["Gunpowder"]
-	print("crafted something")
+	instance_resource()
+	Gui.intract_sys.inventory_data.scrap -= craft_req[craft_ammo_type]["Scrap"]
+	Gui.intract_sys.inventory_data.gunpowder -= craft_req[craft_ammo_type]["Gunpowder"]
 	_on_gui_interactor_item_is_being_used()
+
+func instance_resource() -> void:
+	print(craft_ammo_type)
+	match craft_ammo_type:
+		'PistolAmmo': 
+			print("a")
+			var instance:RigidBody3D = resources[0].instantiate()
+			add_child(instance)
+			instance.global_position = global_position
+			instance.apply_impulse(Vector3.LEFT * 5)

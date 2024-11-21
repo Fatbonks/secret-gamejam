@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3l8hmq0h2p7w"]
+[gd_scene load_steps=12 format=3 uid="uid://b3l8hmq0h2p7w"]
 
 [ext_resource type="Script" path="res://objects/elevator/gui_3d.gd" id="1_6ko5w"]
 [ext_resource type="Script" path="res://objects/crafting_table/crafting_table.gd" id="1_e8bxs"]
 [ext_resource type="Script" path="res://objects/elevator/elevator_level_selector.gd" id="2_3hqjq"]
+[ext_resource type="PackedScene" uid="uid://jqltqh4vb62o" path="res://objects/weapons/ammo/pistol_mag.tscn" id="2_ifhaf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lp64i"]
 size = Vector3(2, 1, 1)
@@ -23,13 +24,14 @@ albedo_texture = SubResource("ViewportTexture_m2c0m")
 size = Vector3(3, 2, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c3fdp"]
-size = Vector3(1.98853, 2.46863, 1)
+size = Vector3(1.619, 0.939607, 0.956)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_h65kp"]
 viewport_path = NodePath("SubViewport")
 
 [node name="CraftingTable" type="Node3D" node_paths=PackedStringArray("Gui")]
 script = ExtResource("1_e8bxs")
+resources = Array[PackedScene]([ExtResource("2_ifhaf")])
 Gui = NodePath("GUIInteractor")
 craft_req = {
 "PistolAmmo": {
@@ -47,7 +49,7 @@ mesh = SubResource("BoxMesh_lp64i")
 
 [node name="GUIPanel3D" type="Node3D" parent="."]
 process_mode = 3
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.34036, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.000111341, 1.34036, -0.00558257)
 script = ExtResource("1_6ko5w")
 
 [node name="SubViewport" type="SubViewport" parent="GUIPanel3D"]
@@ -204,13 +206,15 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.016, 1.57, 1.095)
 
 [node name="GUIInteractor" type="Area3D" parent="." node_paths=PackedStringArray("snap_pos", "_3d_text_sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.979728, -0.00150418)
 input_ray_pickable = false
+monitoring = false
 script = ExtResource("2_3hqjq")
 snap_pos = NodePath("../SnapPos")
 _3d_text_sprite = NodePath("../Sprite3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GUIInteractor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0128174, 0.734314, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.300582, 0)
 shape = SubResource("BoxShape3D_c3fdp")
 
 [node name="SubViewport" type="SubViewport" parent="."]

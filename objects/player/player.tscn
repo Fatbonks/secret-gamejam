@@ -574,6 +574,7 @@ transform = Transform3D(0.112487, 0.990278, -0.0818006, -0.652472, 0.135701, 0.7
 shape = SubResource("CapsuleShape3D_lyo58")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_nbbji")
 
 [node name="InteractSystem" type="Node" parent="." node_paths=PackedStringArray("pic_up_text", "text_anim")]

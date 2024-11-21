@@ -6,12 +6,11 @@ signal found_key(key_type:String)
 signal freeze_player(freeze:bool)
 @export var pic_up_text:Label
 @export var text_anim: AnimationPlayer
-
 var is_player_interacting:bool = false
 var item:InteractableItem
 var player_keys:Array[Key]
-var scrap:int = 2
-var gunpowder:int = 3
+
+var inventory_data:InventoryData = InventoryData.new()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed('interact') and is_player_interacting:
