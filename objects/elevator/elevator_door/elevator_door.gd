@@ -5,11 +5,16 @@ extends Door
 @onready var open_door: AudioStreamPlayer3D = %OpenDoor
 @onready var close_door: AudioStreamPlayer3D = %CloseDoor
 
-func _tween_door(value:float) -> void:
-	var tween: Tween = create_tween()
+var is_running:bool
+var tween:Tween
+func _tween_door(value:float, time:float = 3.5) -> void:
+	if tween != null:
+		tween.kill()
+	tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(doorele_1, 'position:x', value, 3.5)
-	tween.tween_property(doorele_2, 'position:x', -value, 3.5)
+	tween.tween_property(doorele_1, 'position:x', value, time)
+	tween.tween_property(doorele_2, 'position:x', -value, time)
+
 
 func _use_item(interact_sys:InteractionSystem) -> void:
 	if is_locked:

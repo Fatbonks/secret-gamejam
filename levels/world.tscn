@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://crmobp4fr30n6"]
+[gd_scene load_steps=7 format=4 uid="uid://crmobp4fr30n6"]
 
 [ext_resource type="Script" path="res://levels/world_script.gd" id="1_tw65p"]
 [ext_resource type="PackedScene" uid="uid://bm4i0gaf0i0ku" path="res://objects/player/player.tscn" id="2_g7td8"]
 [ext_resource type="PackedScene" uid="uid://npdi4mvgwf6n" path="res://objects/elevator/Elevator.tscn" id="3_gginl"]
+[ext_resource type="PackedScene" uid="uid://bq6va1r073te2" path="res://objects/test/level_scene_test.tscn" id="4_bgkux"]
 
 [sub_resource type="Environment" id="Environment_ux8f7"]
 
@@ -13,7 +14,7 @@ loop_mode = 1
 loop_end = 516865
 mix_rate = 16000
 
-[node name="World" type="Node3D" node_paths=PackedStringArray("player")]
+[node name="World" type="Node3D" node_paths=PackedStringArray("player", "starter_level")]
 script = ExtResource("1_tw65p")
 player = NodePath("Player")
 levels = {
@@ -21,6 +22,7 @@ levels = {
 0: "res://levels/level_1/level_1_scene.tscn"
 }
 }
+starter_level = NodePath("LevelSceneTest")
 
 [node name="Player" parent="." instance=ExtResource("2_g7td8")]
 transform = Transform3D(-0.997851, 0, 0.065525, 0, 1, 0, -0.065525, 0, -0.997851, 0.00600004, 2.01096, 0.1883)
@@ -43,6 +45,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36185, 0)
 stream = SubResource("AudioStreamWAV_dv1nl")
 volume_db = -28.0
+
+[node name="LevelSceneTest" parent="." instance=ExtResource("4_bgkux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392248, -8.36688)
 
 [connection signal="load_level" from="Elevator" to="." method="_on_elevator_load_level"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -7,7 +7,7 @@ extends Node3D
 
 @export_category('Levels')
 @export var levels:Dictionary
-@export var starter_level:PackedScene
+@export var starter_level:LevelScene
 
 @onready var timer: Timer = %Timer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = %AudioStreamPlayer3D
@@ -16,9 +16,10 @@ extends Node3D
 var is_loading_level:bool = false
 var current_level_string:String
 var loaded_scene:PackedScene
-func _ready() -> void:
-	pass
+var current_level_scene:LevelScene
 
+func _ready() -> void:
+	current_level_scene = starter_level
 
 func _on_elevator_load_level(value: int) -> void:
 	randomize()
@@ -35,16 +36,16 @@ func _process(delta: float) -> void:
 		var level_array:Array
 		ResourceLoader.load_threaded_get_status(current_level_string, level_array)
 		if level_array[0] == 1:
-			timer.start(5)
+			timer.start(2)
 			is_loading_level = false
 
 
 func _on_timer_timeout() -> void:
 	var tween:Tween = create_tween()
 	var scene:PackedScene = ResourceLoader.load_threaded_get(current_level_string)
-	var level_scene:LevelScene = scene.instantiate()
-	add_child(level_scene)
-	level_scene.global_position = level_scene.level_position
+	current_level_scene = scene.instantiate()
+	add_child(current_level_scene)
+	current_level_scene.global_position = current_level_scene.level_position
 	tween.tween_property(audio_stream_player_3d, 'volume_db', -80, 5)
 	await tween.finished
 	audio_stream_player_3d.stop()

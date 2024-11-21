@@ -22,10 +22,10 @@ func _use_item(interact_sys:InteractionSystem) -> void:
 	is_open = !is_open
 
 
-func _tween_door(value:float) -> void:
+func _tween_door(_value:float, _time:float = 1) -> void:
 	pass
 
-func use_key(keys:Array[Key]) -> void:
+func use_key(_keys:Array[Key]) -> void:
 	pass
 
 func change_sprite_visibility() -> void:

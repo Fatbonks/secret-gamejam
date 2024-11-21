@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !is_frozen:
 		velocity.y = jump_height
 
 
@@ -97,9 +97,5 @@ func weapon_tilt(input_direction:Vector2, delta:float) -> void:
 	elif input_direction.y == -1:
 		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, -weapon_tilt_amount, weapon_tilt_speed * delta)
 
-func freeze_player():
-	if is_frozen:
-		is_frozen = !is_frozen
-		return
-	is_frozen = true
-	
+func freeze_player(freeze:bool):
+	is_frozen = freeze

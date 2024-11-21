@@ -542,7 +542,7 @@ target_node = NodePath("../../../../WeaponHolder/WeaponPivot/Gun/RightMarker")
 script = ExtResource("2_775sh")
 
 [node name="UIBone" type="BoneAttachment3D" parent="Camera3D/Arms/Armature/Skeleton3D"]
-transform = Transform3D(0.00193121, -0.999996, 0.00204469, 0.991195, 0.00164353, -0.132397, 0.132393, 0.00228237, 0.991195, -2.57836, 0.500342, -0.00403605)
+transform = Transform3D(0.112867, 0.970817, 0.211603, 0.671402, 0.0824716, -0.73649, -0.732448, 0.225196, -0.6425, -0.967535, -0.0541188, -1.41664)
 bone_name = "Bone.006"
 bone_idx = 7
 

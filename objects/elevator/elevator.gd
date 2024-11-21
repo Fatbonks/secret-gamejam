@@ -16,5 +16,5 @@ func _on_level_2_pressed() -> void:
 
 
 func _on_elevator_level_selector_close_elevator() -> void:
-	elevator_door._tween_door(0.6)
+	elevator_door._tween_door(0.6, 1)
 	elevator_door.is_open = false

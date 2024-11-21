@@ -1,0 +1,257 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3l8hmq0h2p7w"]
+
+[ext_resource type="Script" path="res://objects/elevator/gui_3d.gd" id="1_6ko5w"]
+[ext_resource type="Script" path="res://objects/crafting_table/crafting_table.gd" id="1_e8bxs"]
+[ext_resource type="Script" path="res://objects/elevator/elevator_level_selector.gd" id="2_3hqjq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lp64i"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2ffdj"]
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m2c0m"]
+viewport_path = NodePath("GUIPanel3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e03v0"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_m2c0m")
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(3, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3fdp"]
+size = Vector3(1.98853, 2.46863, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h65kp"]
+viewport_path = NodePath("SubViewport")
+
+[node name="CraftingTable" type="Node3D" node_paths=PackedStringArray("Gui")]
+script = ExtResource("1_e8bxs")
+Gui = NodePath("GUIInteractor")
+craft_req = {
+"PistolAmmo": {
+"Gunpowder": 1,
+"Scrap": 1
+},
+"ShotgunAmmo": {
+"Gunpowder": 2,
+"Scrap": 4
+}
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_lp64i")
+
+[node name="GUIPanel3D" type="Node3D" parent="."]
+process_mode = 3
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.34036, 0)
+script = ExtResource("1_6ko5w")
+
+[node name="SubViewport" type="SubViewport" parent="GUIPanel3D"]
+handle_input_locally = false
+gui_embed_subwindows = true
+size = Vector2i(560, 360)
+render_target_update_mode = 4
+
+[node name="GUI" type="Control" parent="GUIPanel3D/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 560.0
+offset_bottom = 360.0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="GUIPanel3D/SubViewport/GUI"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUIPanel3D/SubViewport/GUI/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.5
+offset_right = 89.5
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="AmmoButton" type="Button" parent="GUIPanel3D/SubViewport/GUI/Panel/HBoxContainer"]
+layout_mode = 2
+text = "ammo"
+
+[node name="NotUsedYetButton2" type="Button" parent="GUIPanel3D/SubViewport/GUI/Panel/HBoxContainer"]
+layout_mode = 2
+text = "other stuff"
+
+[node name="Panel2" type="Panel" parent="GUIPanel3D/SubViewport/GUI"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 560.0
+offset_bottom = 360.0
+
+[node name="AmmoCon" type="VBoxContainer" parent="GUIPanel3D/SubViewport/GUI/Panel2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 262.0
+theme_override_constants/separation = 20
+
+[node name="PistolButton" type="Button" parent="GUIPanel3D/SubViewport/GUI/Panel2/AmmoCon"]
+layout_mode = 2
+text = "pistol ammo"
+
+[node name="Label" type="Label" parent="GUIPanel3D/SubViewport/GUI/Panel2/AmmoCon/PistolButton"]
+layout_mode = 2
+offset_left = 197.0
+offset_top = 4.8
+offset_right = 388.0
+offset_bottom = 27.8
+text = "Scrap x 2 Gunpowder x 1"
+
+[node name="ShotgunButton" type="Button" parent="GUIPanel3D/SubViewport/GUI/Panel2/AmmoCon"]
+layout_mode = 2
+text = "Shotgun ammo"
+
+[node name="Label" type="Label" parent="GUIPanel3D/SubViewport/GUI/Panel2/AmmoCon/ShotgunButton"]
+layout_mode = 2
+offset_left = 195.0
+offset_top = 5.0
+offset_right = 386.0
+offset_bottom = 28.0
+text = "Scrap x 4 Gunpowder x 2"
+
+[node name="CraftButton" type="Button" parent="GUIPanel3D/SubViewport/GUI/Panel2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Craft"
+
+[node name="Label" type="Label" parent="GUIPanel3D/SubViewport/GUI/Panel2/CraftButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -27.5
+offset_right = -32.0
+offset_bottom = -4.5
+grow_horizontal = 0
+grow_vertical = 0
+text = "1 x"
+
+[node name="ResourceCon" type="HBoxContainer" parent="GUIPanel3D/SubViewport/GUI/Panel2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="GUIPanel3D/SubViewport/GUI/Panel2/ResourceCon"]
+layout_mode = 2
+text = "Amount:"
+
+[node name="ScrapLabel" type="Label" parent="GUIPanel3D/SubViewport/GUI/Panel2/ResourceCon"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 x Scrap"
+
+[node name="GunpowderLabel" type="Label" parent="GUIPanel3D/SubViewport/GUI/Panel2/ResourceCon"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 x Gunpowder"
+
+[node name="Quad" type="MeshInstance3D" parent="GUIPanel3D"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.0366687, -0.129293, 0.317469)
+mesh = SubResource("QuadMesh_2ffdj")
+surface_material_override/0 = SubResource("StandardMaterial3D_e03v0")
+
+[node name="Area3D" type="Area3D" parent="GUIPanel3D/Quad"]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GUIPanel3D/Quad/Area3D"]
+shape = SubResource("4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.016, 1.57, 1.095)
+
+[node name="SnapPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.016, 1.57, 1.095)
+
+[node name="GUIInteractor" type="Area3D" parent="." node_paths=PackedStringArray("snap_pos", "_3d_text_sprite")]
+input_ray_pickable = false
+script = ExtResource("2_3hqjq")
+snap_pos = NodePath("../SnapPos")
+_3d_text_sprite = NodePath("../Sprite3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GUIInteractor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0128174, 0.734314, 0)
+shape = SubResource("BoxShape3D_c3fdp")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+gui_snap_controls_to_pixels = false
+render_target_update_mode = 3
+
+[node name="eleUI" type="CanvasLayer" parent="SubViewport"]
+
+[node name="Control" type="Control" parent="SubViewport/eleUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="SubViewport/eleUI/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "E to interact"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.520769, 0.717168)
+visible = false
+texture = SubResource("ViewportTexture_h65kp")
+
+[connection signal="pressed" from="GUIPanel3D/SubViewport/GUI/Panel/HBoxContainer/AmmoButton" to="." method="_on_ammo_button_pressed"]
+[connection signal="pressed" from="GUIPanel3D/SubViewport/GUI/Panel2/CraftButton" to="." method="_on_craft_button_pressed"]
+[connection signal="item_is_being_used" from="GUIInteractor" to="." method="_on_gui_interactor_item_is_being_used"]

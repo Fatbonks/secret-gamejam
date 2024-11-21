@@ -2,7 +2,7 @@ extends Door
 
 @onready var pivot: Node3D = %Pivot
 
-func _tween_door(value:float) -> void:
+func _tween_door(value:float, time:float = 0.2) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(pivot, 'rotation_degrees:y', value, 0.2)
 
