@@ -24,6 +24,7 @@ func _use_item(interact_sys:InteractionSystem) -> void:
 	tween.set_parallel(true)
 	tween.tween_property(camera_3d, "global_position", snap_pos.global_position, 0.2)
 	tween.tween_property(camera_3d, "global_rotation_degrees", snap_pos.global_rotation_degrees, 0.2)
+	item_is_being_used.emit(interact_sys.inventory_data)
 	item_is_being_used.emit()
 
 

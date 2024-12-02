@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 @onready var red_found: Label = %RedFound
 @onready var white_found: Label = %WhiteFound
 @onready var yellow_found: Label = %YellowFound

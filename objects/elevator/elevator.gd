@@ -1,10 +1,9 @@
 class_name ElevatorLevelLoader
 extends Node3D
-
 signal load_level(value:int)
 
 @onready var elevator_door: Door = %ElevatorDoor
-
+@export var data_manager:DataManager
 
 func _on_level_1_pressed() -> void:
 	load_level.emit(0)

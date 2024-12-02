@@ -32,12 +32,6 @@ func _input(event:InputEvent) -> void:
 		camera_3d.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		#mouse_input = event.relative
-	if event.is_action_pressed("show ui") and !enable_ui:
-		arm_animation.play('show ui')
-		enable_ui = true
-	elif event.is_action_pressed("show ui") and enable_ui:
-		arm_animation.play('hide ui')
-		enable_ui = false
 
 
 func _physics_process(delta: float) -> void:
@@ -90,12 +84,15 @@ func weapon_tilt(input_direction:Vector2, delta:float) -> void:
 	
 	elif input_direction.x == -1:
 		weapon_pivot.rotation_degrees.z = lerpf(weapon_pivot.rotation_degrees.z, weapon_tilt_amount, weapon_tilt_speed * delta)
-	
+	else:
+		weapon_pivot.rotation_degrees.z = lerpf(weapon_pivot.rotation_degrees.z, 0.0, weapon_tilt_speed * delta)
 	if input_direction.y == 1:
 		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, weapon_tilt_amount, weapon_tilt_speed * delta)
 	
 	elif input_direction.y == -1:
 		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, -weapon_tilt_amount, weapon_tilt_speed * delta)
+	else:
+		weapon_pivot.rotation_degrees.x = lerpf(weapon_pivot.rotation_degrees.x, 0.0, weapon_tilt_speed * delta)
 
 func freeze_player(freeze:bool):
 	is_frozen = freeze

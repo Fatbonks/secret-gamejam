@@ -17,15 +17,29 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalScript="res://global/global_script.gd"
+GameManager="res://global/game_save_manager.gd"
+
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=256
+window/size/mode=3
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+window/vsync/vsync_mode=0
 
 [global_group]
 
 interactable_items=""
+save_info="gets the info from objects are they dynamic"
 
 [input]
 
 ui_accept={
+"deadzone": 0.5,
+"events": []
+}
+ui_focus_next={
 "deadzone": 0.5,
 "events": []
 }
@@ -54,7 +68,7 @@ interact={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
-"show ui"={
+show_health_ui={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
 ]
@@ -67,5 +81,10 @@ escape={
 jump={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+show_inventory_ui={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }

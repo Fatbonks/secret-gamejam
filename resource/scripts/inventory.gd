@@ -7,6 +7,8 @@ var pistol_magazine:int:
 	set(value):
 		if value >= max_pistol_magazine:
 			pistol_magazine = max_pistol_magazine
+		else:
+			pistol_magazine = value
 var shotgun_magazine:int:
 	set(value):
 		if value >= max_shotgun_magazine:

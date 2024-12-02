@@ -10,7 +10,8 @@ extends InteractableItem
 func _use_item(_interact_sys:InteractionSystem) -> void:
 	var tween:Tween = create_tween()
 	var current_val:int = _interact_sys.inventory_data.get(resource_type)
-	_interact_sys.inventory_data.set(resource_type, current_val + amount)
+	_interact_sys.inventory_data.set(resource_type, (current_val + amount))
+	_interact_sys._on_arm_animation_update_ui()
 	collision_shape_3d.disabled = true
 	tween.tween_property(owner as RigidBody3D, 'global_position', _interact_sys.owner.global_position, 0.1)
 	await tween.finished

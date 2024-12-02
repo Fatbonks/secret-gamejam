@@ -29,10 +29,9 @@ size = Vector3(1.619, 0.939607, 0.956)
 [sub_resource type="ViewportTexture" id="ViewportTexture_h65kp"]
 viewport_path = NodePath("SubViewport")
 
-[node name="CraftingTable" type="Node3D" node_paths=PackedStringArray("Gui")]
+[node name="CraftingTable" type="Node3D"]
 script = ExtResource("1_e8bxs")
 resources = Array[PackedScene]([ExtResource("2_ifhaf")])
-Gui = NodePath("GUIInteractor")
 craft_req = {
 "PistolAmmo": {
 "Gunpowder": 1,
@@ -257,5 +256,7 @@ visible = false
 texture = SubResource("ViewportTexture_h65kp")
 
 [connection signal="pressed" from="GUIPanel3D/SubViewport/GUI/Panel/HBoxContainer/AmmoButton" to="." method="_on_ammo_button_pressed"]
+[connection signal="pressed" from="GUIPanel3D/SubViewport/GUI/Panel2/AmmoCon/PistolButton" to="." method="_craft_ammo" binds= ["PistolAmmo"]]
+[connection signal="pressed" from="GUIPanel3D/SubViewport/GUI/Panel2/AmmoCon/ShotgunButton" to="." method="_craft_ammo" binds= ["ShotgunAmmo"]]
 [connection signal="pressed" from="GUIPanel3D/SubViewport/GUI/Panel2/CraftButton" to="." method="_on_craft_button_pressed"]
 [connection signal="item_is_being_used" from="GUIInteractor" to="." method="_on_gui_interactor_item_is_being_used"]

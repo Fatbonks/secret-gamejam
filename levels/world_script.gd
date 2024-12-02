@@ -31,7 +31,7 @@ func _on_elevator_load_level(value: int) -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta:float) -> void:
 	if is_loading_level:
 		audio_stream_player_3d.play()
 		var level_array:Array

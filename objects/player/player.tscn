@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bm4i0gaf0i0ku"]
+[gd_scene load_steps=34 format=4 uid="uid://bm4i0gaf0i0ku"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_er205"]
 [ext_resource type="Script" path="res://objects/test/start_ik.gd" id="2_775sh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://2y52toxr8e4e" path="res://textures/healthbarprogessback.png" id="4_5351j"]
 [ext_resource type="Texture2D" uid="uid://bq50paq6ja2it" path="res://textures/healthbarprogessfront.png" id="5_w77fk"]
 [ext_resource type="Texture2D" uid="uid://ca0gj36320wj6" path="res://textures/healthbarprogess.png" id="6_jg7jt"]
+[ext_resource type="Script" path="res://objects/player/arm_animation.gd" id="8_tkfpf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kcby"]
 size = Vector3(0.1, 0.1, 2.5)
@@ -133,6 +134,9 @@ blend_shape_mode = 0
 [sub_resource type="ViewportTexture" id="ViewportTexture_xubhk"]
 viewport_path = NodePath("HealthUI")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_rb86b"]
+viewport_path = NodePath("InventoryUI")
+
 [sub_resource type="BoxMesh" id="BoxMesh_x50ue"]
 size = Vector3(0.1, 0.1, 0.5)
 
@@ -248,159 +252,7 @@ colors = PackedColorArray(1, 1, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3i2y4"]
 gradient = SubResource("Gradient_pn51e")
 
-[sub_resource type="Animation" id="Animation_1up6m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/Arms/Armature/Skeleton3D/UIBone/Sprite3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:top_level")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.84138, -0.123054, -1.36574)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.269287, -0.260591, 0.0579323)]
-}
-
-[sub_resource type="Animation" id="Animation_r2u8e"]
-resource_name = "hide ui"
-length = 0.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/Arms/Armature/Skeleton3D/UIBone/Sprite3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-1.08563, -0.176316, -1.30137), Vector3(-0.84138, -0.123054, -1.36574)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.634276, -0.462332, -0.264678), Vector3(-0.269287, -0.260591, 0.0579323)]
-}
-
-[sub_resource type="Animation" id="Animation_iv6jo"]
-resource_name = "show ui"
-length = 0.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/Arms/Armature/Skeleton3D/UIBone/Sprite3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:top_level")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.84138, -0.123054, -1.36574), Vector3(-1.08563, -0.176316, -1.30137)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D/WeaponHolder/WeaponPivot/Gun/RightMarker:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.269287, -0.260591, 0.0579323), Vector3(-0.634276, -0.462332, -0.264678)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_e30q0"]
-_data = {
-"RESET": SubResource("Animation_1up6m"),
-"hide ui": SubResource("Animation_r2u8e"),
-"show ui": SubResource("Animation_iv6jo")
-}
-
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("weapon_pivot", "arm_animation")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("weapon_pivot")]
 input_ray_pickable = false
 script = ExtResource("1_er205")
 mouse_sensitivity = 0.5
@@ -409,7 +261,6 @@ camera_tilt_speed = 10.0
 weapon_pivot = NodePath("Camera3D/WeaponHolder/WeaponPivot")
 weapon_tilt_amount = 6.0
 weapon_tilt_speed = 10.0
-arm_animation = NodePath("ArmAnimation")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -424,7 +275,6 @@ monitorable = false
 shape = SubResource("BoxShape3D_6kcby")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-visible = false
 spot_angle = 41.36
 
 [node name="Arms" type="Node3D" parent="Camera3D"]
@@ -542,14 +392,22 @@ target_node = NodePath("../../../../WeaponHolder/WeaponPivot/Gun/RightMarker")
 script = ExtResource("2_775sh")
 
 [node name="UIBone" type="BoneAttachment3D" parent="Camera3D/Arms/Armature/Skeleton3D"]
-transform = Transform3D(0.112867, 0.970817, 0.211603, 0.671402, 0.0824716, -0.73649, -0.732448, 0.225196, -0.6425, -0.967535, -0.0541188, -1.41664)
+transform = Transform3D(0.00193121, -0.999996, 0.00204469, 0.991195, 0.00164353, -0.132397, 0.132393, 0.00228237, 0.991195, -2.57836, 0.500342, -0.00403605)
 bone_name = "Bone.006"
 bone_idx = 7
 
-[node name="Sprite3D" type="Sprite3D" parent="Camera3D/Arms/Armature/Skeleton3D/UIBone"]
-transform = Transform3D(-0.0120671, 0.124771, -0.155841, 0.191876, -0.0358558, -0.0435646, -0.0551171, -0.15214, -0.11754, 0.312773, 0.593389, -0.674774)
+[node name="HealthUISprite" type="Sprite3D" parent="Camera3D/Arms/Armature/Skeleton3D/UIBone"]
+unique_name_in_owner = true
+transform = Transform3D(-0.0182793, 0.115883, -0.161978, 0.193539, -0.0280434, -0.041904, -0.046992, -0.160576, -0.109577, 0.0320556, 0.552223, -0.642894)
 visible = false
 texture = SubResource("ViewportTexture_xubhk")
+
+[node name="InventoryUISprite" type="Sprite3D" parent="Camera3D/Arms/Armature/Skeleton3D/UIBone"]
+unique_name_in_owner = true
+transform = Transform3D(0.0169036, 0.189879, -0.0604987, 0.196352, -0.0262458, -0.0275127, -0.0340598, -0.05707, -0.188634, 0.00216311, 0.287757, -0.411924)
+visible = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_rb86b")
 
 [node name="WeaponHolder" type="Node3D" parent="Camera3D"]
 
@@ -565,10 +423,22 @@ mesh = SubResource("BoxMesh_a237c")
 skeleton = NodePath("../..")
 
 [node name="LeftMarker" type="Marker3D" parent="Camera3D/WeaponHolder/WeaponPivot/Gun"]
-transform = Transform3D(0.627056, -0.764868, 0.147575, -0.0663267, 0.136336, 0.98844, -0.776145, -0.629595, 0.0347589, 0.270888, -0.223182, 0.262565)
+unique_name_in_owner = true
+transform = Transform3D(0.627056, -0.764867, 0.147576, -0.0663268, 0.136336, 0.98844, -0.776145, -0.629596, 0.0347592, 0.270888, -0.223182, 0.262565)
 
 [node name="RightMarker" type="Marker3D" parent="Camera3D/WeaponHolder/WeaponPivot/Gun"]
-transform = Transform3D(0.112487, 0.990278, -0.0818006, -0.652472, 0.135701, 0.745563, 0.749417, -0.0304932, 0.661395, -0.269287, -0.260591, 0.0579323)
+unique_name_in_owner = true
+transform = Transform3D(0.112486, 0.990278, -0.0818007, -0.652472, 0.1357, 0.745563, 0.749417, -0.0304929, 0.661395, -0.269287, -0.260591, 0.0579323)
+rotation_edit_mode = 1
+
+[node name="ArmInventoryUI" type="Marker3D" parent="Camera3D/WeaponHolder"]
+unique_name_in_owner = true
+transform = Transform3D(0.112487, 0.990281, -0.0818006, -0.652473, 0.135701, 0.745564, 0.749417, -0.0304933, 0.661395, -0.729389, -0.0123197, -0.725905)
+rotation_edit_mode = 1
+
+[node name="ArmHealthUI" type="Marker3D" parent="Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.112488, 0.99028, -0.0818006, -0.449531, 0.124134, 0.884597, 0.886154, -0.0627344, 0.459125, -0.634276, -0.462332, -0.264678)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_lyo58")
@@ -576,6 +446,11 @@ shape = SubResource("CapsuleShape3D_lyo58")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_nbbji")
+
+[node name="ArmAnimation" type="Node" parent="."]
+script = ExtResource("8_tkfpf")
+reset_position = Vector3(-0.269287, -0.260591, 0.0579323)
+reset_rotation = Quaternion(-0.280798, -0.300757, -0.594392, 0.690938)
 
 [node name="InteractSystem" type="Node" parent="." node_paths=PackedStringArray("pic_up_text", "text_anim")]
 script = ExtResource("2_hp50v")
@@ -590,22 +465,17 @@ libraries = {
 [node name="HealthUI" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true
-size = Vector2i(800, 512)
+size = Vector2i(512, 256)
 
-[node name="UI" type="CanvasLayer" parent="HealthUI"]
+[node name="Control2" type="Control" parent="HealthUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 256.0
 script = ExtResource("3_c62hb")
 
-[node name="Control" type="Control" parent="HealthUI/UI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_group_ = true
-
-[node name="Panel" type="Panel" parent="HealthUI/UI/Control"]
-modulate = Color(1, 1, 1, 0.392157)
+[node name="Panel" type="Panel" parent="HealthUI/Control2"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -613,32 +483,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthUI/UI/Control"]
-texture_filter = 1
+[node name="HBoxContainer2" type="HBoxContainer" parent="HealthUI/Control2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -252.0
-offset_top = 1.0
-offset_right = -188.0
-offset_bottom = 41.0
+offset_left = -56.0
+offset_right = 8.0
+offset_bottom = 32.0
 grow_horizontal = 2
-scale = Vector2(8, 8)
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthUI/Control2/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 value = 100.0
 texture_under = ExtResource("4_5351j")
 texture_over = ExtResource("5_w77fk")
 texture_progress = ExtResource("6_jg7jt")
 
-[node name="Red" type="Control" parent="HealthUI/UI/Control"]
-anchors_preset = 0
-offset_left = 352.0
-offset_top = 356.0
-offset_right = 352.0
-offset_bottom = 356.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="HealthUI/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_right = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 125
+
+[node name="Red" type="Control" parent="HealthUI/Control2/HBoxContainer3"]
+layout_mode = 2
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="HealthUI/UI/Control/Red"]
+[node name="TextureRect" type="TextureRect" parent="HealthUI/Control2/HBoxContainer3/Red"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 23.0
@@ -646,14 +532,14 @@ offset_right = 80.0
 offset_bottom = 87.0
 texture = SubResource("GradientTexture2D_d72h2")
 
-[node name="Key" type="Label" parent="HealthUI/UI/Control/Red/TextureRect"]
+[node name="Key" type="Label" parent="HealthUI/Control2/HBoxContainer3/Red/TextureRect"]
 layout_mode = 2
 offset_left = -16.0
 offset_top = -23.0
 offset_right = 76.0
 text = "red keycard"
 
-[node name="RedFound" type="Label" parent="HealthUI/UI/Control/Red"]
+[node name="RedFound" type="Label" parent="HealthUI/Control2/HBoxContainer3/Red"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -662,15 +548,11 @@ offset_right = 92.0
 offset_bottom = 113.0
 text = "not found"
 
-[node name="White" type="Control" parent="HealthUI/UI/Control"]
-anchors_preset = 0
-offset_left = 691.0
-offset_top = 353.0
-offset_right = 691.0
-offset_bottom = 353.0
+[node name="White" type="Control" parent="HealthUI/Control2/HBoxContainer3"]
+layout_mode = 2
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="HealthUI/UI/Control/White"]
+[node name="TextureRect" type="TextureRect" parent="HealthUI/Control2/HBoxContainer3/White"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 23.0
@@ -678,14 +560,14 @@ offset_right = 80.0
 offset_bottom = 87.0
 texture = SubResource("GradientTexture2D_a0gfx")
 
-[node name="Key" type="Label" parent="HealthUI/UI/Control/White/TextureRect"]
+[node name="Key" type="Label" parent="HealthUI/Control2/HBoxContainer3/White/TextureRect"]
 layout_mode = 2
 offset_left = -16.0
 offset_top = -23.0
 offset_right = 76.0
 text = "white keycard"
 
-[node name="WhiteFound" type="Label" parent="HealthUI/UI/Control/White"]
+[node name="WhiteFound" type="Label" parent="HealthUI/Control2/HBoxContainer3/White"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -694,15 +576,11 @@ offset_right = 92.0
 offset_bottom = 113.0
 text = "not found"
 
-[node name="Yellow" type="Control" parent="HealthUI/UI/Control"]
-anchors_preset = 0
-offset_left = 520.0
-offset_top = 355.0
-offset_right = 520.0
-offset_bottom = 355.0
+[node name="Yellow" type="Control" parent="HealthUI/Control2/HBoxContainer3"]
+layout_mode = 2
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="HealthUI/UI/Control/Yellow"]
+[node name="TextureRect" type="TextureRect" parent="HealthUI/Control2/HBoxContainer3/Yellow"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 23.0
@@ -710,14 +588,14 @@ offset_right = 80.0
 offset_bottom = 87.0
 texture = SubResource("GradientTexture2D_3i2y4")
 
-[node name="Key" type="Label" parent="HealthUI/UI/Control/Yellow/TextureRect"]
+[node name="Key" type="Label" parent="HealthUI/Control2/HBoxContainer3/Yellow/TextureRect"]
 layout_mode = 2
 offset_left = -16.0
 offset_top = -23.0
 offset_right = 76.0
 text = "yellow keycard"
 
-[node name="YellowFound" type="Label" parent="HealthUI/UI/Control/Yellow"]
+[node name="YellowFound" type="Label" parent="HealthUI/Control2/HBoxContainer3/Yellow"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -743,20 +621,82 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 98.0
+offset_left = 428.0
+offset_top = 369.0
+offset_right = 546.0
+offset_bottom = 392.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Picked_up _shit"
 
-[node name="ArmAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_e30q0")
-}
+[node name="InventoryUI" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(512, 256)
+
+[node name="InventoryUI" type="Control" parent="InventoryUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 256.0
+
+[node name="Panel" type="Panel" parent="InventoryUI/InventoryUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryUI/InventoryUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -38.5
+offset_right = 124.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryUI/InventoryUI/HBoxContainer"]
+layout_mode = 2
+
+[node name="Ammo" type="Label" parent="InventoryUI/InventoryUI/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ammo:"
+
+[node name="PistolAmmo" type="Label" parent="InventoryUI/InventoryUI/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pistol mags: 0/5
+"
+
+[node name="ShotgunAmmo" type="Label" parent="InventoryUI/InventoryUI/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "shogun mags: 0/5
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="InventoryUI/InventoryUI/HBoxContainer"]
+layout_mode = 2
+
+[node name="AmountScrap" type="Label" parent="InventoryUI/InventoryUI/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Scrap: 0"
+
+[node name="AmountGunpowder" type="Label" parent="InventoryUI/InventoryUI/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Gunpowder: 0"
 
 [connection signal="area_entered" from="Camera3D/Area3D" to="InteractSystem" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Camera3D/Area3D" to="InteractSystem" method="_on_area_3d_area_exited"]
-[connection signal="found_key" from="InteractSystem" to="HealthUI/UI" method="_on_interact_system_found_key"]
+[connection signal="update_ui" from="ArmAnimation" to="InteractSystem" method="_on_arm_animation_update_ui"]
 [connection signal="freeze_player" from="InteractSystem" to="." method="freeze_player"]
 [connection signal="ui_text_picked_up" from="InteractSystem" to="InteractSystem" method="_set_text_pickup"]
